@@ -42,6 +42,7 @@ interface UmamiOptions {
 }
 
 export default function (options: OptionalExceptFor<UmamiOptions, "id">) {
+): (site: Site) => void {
   const {
     autotrack = true,
     domains = [],
@@ -63,15 +64,14 @@ export default function (options: OptionalExceptFor<UmamiOptions, "id">) {
         script.setAttribute("data-website-id", `${id}`);
 
         // Optional
-        !autotrack
-          ? `script.setAttribute("data-auto-track", "${autotrack}")`
-          : "";
-        domains.length > 0
-          ? `script.setAttribute("data-domains", "${domains.join(",")}")`
-          : "";
-        hostUrl !== "https://cloud.umami.is"
-          ? `script.setAttribute("data-host-url", "${hostUrl}")`
-          : "";
+        !autotrack &&
+          script.setAttribute("data-auto-track", `${autotrack}`);
+
+        domains.length > 0 &&
+          script.setAttribute("data-domains", `${domains.join(",")}`);
+
+        hostUrl !== "https://cloud.umami.is" &&
+          script.setAttribute("data-host-url", `${hostUrl}`);
 
         page.document!.head.appendChild(script);
       }
