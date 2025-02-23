@@ -1,27 +1,37 @@
 import type Site from "lume/core/site.ts";
 
+/**
+ * @private
+ */
 type OptionalExceptFor<T, K extends keyof T> =
   & {
     [P in keyof T]: P extends K ? T[P] : T[P] | undefined;
   }
   & Pick<T, K>;
 
-interface UmamiOptions {
+export interface UmamiOptions {
   /**
-   * Umami tracks all events and pageviews for you automatically. Override this behavior if you plan on using [tracker functions](https://umami.is/docs/tracker-functions).
+   * Umami tracks all events and pageviews for you automatically. Override this behavior if you plan on using {@link https://umami.is/docs/tracker-functions | tracker functions}.
+   *
    * @default true
    */
   autotrack?: boolean;
   /**
    * If you want the tracker to only run on specific domains, add them to this list.
    *
-   * @example ["mywebsite.com", "mywebsite2.com"]
+   * ```ts
+   * ["mywebsite.com", "mywebsite2.com"]
+   * ```
    */
   domains?: string[];
   /**
    * The endpoint where your Umami instance is located.
+   *
    * @default https://cloud.umami.is
-   * @example https://umami-on.fly.dev
+   *
+   * ```ts
+   * https://umami-on.fly.dev
+   * ```
    */
   endpointUrl?: string;
   /**
@@ -29,19 +39,24 @@ interface UmamiOptions {
    */
   hostUrl?: string;
   /**
-   * The unique ID of your [website](https://umami.is/docs/add-a-website).
+   * The unique ID of your {@link https://umami.is/docs/add-a-website | website}.
    */
   id: string;
   /**
    * Assign a custom name to the tracker script.
    *
    * @default script.js
-   * @see [https://umami.is/docs/environment-variables](https://umami.is/docs/environment-variables)
+   *
+   * @see {@link https://umami.is/docs/environment-variables}
    */
   trackerScriptName?: string;
 }
 
-export default function (options: OptionalExceptFor<UmamiOptions, "id">) {
+/**
+ * @param options The plugin supports all {@link https://umami.is/docs/tracker-configuration | configuration} options. Except for the `id`, all other options are optional. See {@see UmamiOptions} for all available options.
+ */
+export default function (
+  options: OptionalExceptFor<UmamiOptions, "id">,
 ): (site: Site) => void {
   const {
     autotrack = true,
