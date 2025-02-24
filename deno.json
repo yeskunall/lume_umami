@@ -1,6 +1,8 @@
 {
-  "tasks": {
-    "dev": "deno run --watch main.ts"
+  "name": "@yeskunall/lume-umami",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./mod.ts"
   },
   "imports": {
     "lume/": "https://deno.land/x/lume@v2.5.2/"
@@ -9,6 +11,12 @@
   "compilerOptions": {
     "types": [
       "lume/types.ts"
+    ]
+  },
+  "publish": {
+    "exclude": [
+      ".github/**",
+      ".gitattributes"
     ]
   }
 }
