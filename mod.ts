@@ -1,3 +1,4 @@
+import type { Plugin } from "lume/core/site.ts";
 import type Site from "lume/core/site.ts";
 
 /**
@@ -57,7 +58,7 @@ export interface UmamiOptions {
  */
 export default function (
   options: OptionalExceptFor<UmamiOptions, "id">,
-): (site: Site) => void {
+): Plugin {
   const {
     autotrack = true,
     domains = [],
