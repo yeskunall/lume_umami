@@ -37,6 +37,10 @@ const site = lume({});
 
 ###### 📖 For all configurable options, see the [interface](https://github.com/yeskunall/lume-umami/blob/main/mod.ts#L11).
 
+### Related
+
+[`astro-umami`](https://github.com/yeskunall/astro-umami) - [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) to add [Umami Analytics](https://umami.is/) to your website
+
 ---
 
 #### ⚖️ License
