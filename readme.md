@@ -1,4 +1,4 @@
-# lume-umami
+# lume_umami
 
 <!-- deno-fmt-ignore-start -->
 
@@ -8,10 +8,9 @@
 
 ## 🪶 Highlights
 
-- Disables events and pageviews during development
-- Prevents Google Tag Manager from stripping custom `data-*` attributes
+- **Zero dependencies**
 - Supports all [configuration](https://umami.is/docs/tracker-configuration) options
-- (_Optionally_) Serve the tracking script using [Partytown](https://partytown.builder.io/) (_**planned in an upcoming release**_)
+- Provides autocomplete and inline documentation
 - **Actively maintained**
 
 ## 🍛 Usage
@@ -21,14 +20,14 @@
 1. Install the required dependencies
 
 ```sh
-deno add jsr:@yeskunall/lume-umami
+deno add lume_umami
 ```
 
 2. Add the integration to your Lume config:
 
 ```diff
 import lume from "lume/mod.ts";
-+ import umami from "jsr:@yeskunall/lume-umami";
++ import umami from "lume_umami";
 
 const site = lume({});
 
